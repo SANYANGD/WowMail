@@ -1,4 +1,7 @@
-# WowMail
-Sophomore summer programming training
-port 8521
+# WowMall
+
+## **四川大学软件学院2018级小学期实训第34组**
+---
+- ###  成员：
+   ####  &nbsp;  毛洋  贾婧怡  代春洋  兰鑫
 
