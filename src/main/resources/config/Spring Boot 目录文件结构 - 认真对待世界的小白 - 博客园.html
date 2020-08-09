@@ -1,0 +1,1710 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)https://www.cnblogs.com/jwen1994/p/11184152.html -->
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="origin">
+    <meta property="og:description"
+          content="1.目录结构 src/main/java：存放代码 src/main/resources resources：（Spring Boot 默认的）存放资源文件 static：（Spring Boot 默">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Spring Boot 目录文件结构 - 认真对待世界的小白 - 博客园</title>
+    <link id="favicon" rel="shortcut icon" href="https://common.cnblogs.com/favicon.ico?v=20200522" type="image/x-icon">
+
+    <link rel="stylesheet" href="./Spring Boot 目录文件结构 - 认真对待世界的小白 - 博客园_files/blog-common.min.css">
+    <link id="MainCss" rel="stylesheet" href="./Spring Boot 目录文件结构 - 认真对待世界的小白 - 博客园_files/bundle-codinglife.min.css">
+    <link type="text/css" rel="stylesheet" href="./Spring Boot 目录文件结构 - 认真对待世界的小白 - 博客园_files/custom.css">
+    <link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet"
+          href="./Spring Boot 目录文件结构 - 认真对待世界的小白 - 博客园_files/bundle-codinglife-mobile.min.css">
+
+    <link type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/jwen1994/rss">
+    <link type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/jwen1994/rsd.xml">
+    <link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/jwen1994/wlwmanifest.xml">
+    <script async="" src="./Spring Boot 目录文件结构 - 认真对待世界的小白 - 博客园_files/analytics.js.下载"></script>
+    <script type="text/javascript" src="./Spring Boot 目录文件结构 - 认真对待世界的小白 - 博客园_files/encoder.js.下载"></script>
+    <script>
+        var currentBlogId = 464950;
+        var currentBlogApp = 'jwen1994';
+        var cb_enable_mathjax = false;
+        var isLogined = true;
+        var skinName = 'CodingLife';
+        var visitorUserId = 'a95d4c97-cfc2-457d-c528-08d63c788594';
+    </script>
+    <script>
+        var currentPostDateAdded = '2019-07-14 03:49';
+    </script>
+    <script src="./Spring Boot 目录文件结构 - 认真对待世界的小白 - 博客园_files/jquery-2.2.0.min.js.下载"></script>
+    <script src="./Spring Boot 目录文件结构 - 认真对待世界的小白 - 博客园_files/blog-common.min.js.下载"></script>
+
+
+</head>
+<remove-web-limits-iqxin id="rwl-iqxin" class="rwl-exempt"
+                         style="position: fixed; top: 52px; left: 0px; transition: all 0.3s ease 0s; right: auto;">
+    <qxinbutton type="qxinbutton" id="rwl-setbtn"> set</qxinbutton>
+    <lalala style="cursor:move; font-size:12px;">限制解除</lalala>
+    <input type="checkbox" name="" id="black_node">
+    <style type="text/css">#rwl-iqxin {
+        position: fixed;
+        transform: translate(-95px, 0);
+        width: 85px;
+        height: 25px;
+        font-size: 12px;
+        font-weight: 500;
+        font-family: Verdana, Arial, '宋体';
+        color: #fff;
+        background: #333;
+        z-index: 2147483647;
+        margin: 0;
+        opacity: 0.05;
+        transition: 0.3s;
+        overflow: hidden;
+        user-select: none;
+        text-align: center;
+        white-space: nowrap;
+        line-height: 25px;
+        padding: 0 16px;
+        border: 1px solid #ccc;
+        border-width: 1px 1px 1px 0;
+        border-bottom-right-radius: 5px;
+        box-sizing: content-box;
+    }
+
+    #rwl-iqxin input {
+        margin: 0;
+        padding: 0;
+        vertical-align: middle;
+        -webkit-appearance: checkbox;
+        -moz-appearance: checkbox;
+        position: static;
+        clip: auto;
+        opacity: 1;
+        cursor: pointer;
+    }
+
+    #rwl-iqxin.rwl-active-iqxin {
+        left: 0px;
+        transform: translate(0, 0);
+        opacity: 0.9;
+        height: 32px;
+        line-height: 32px
+    }
+
+    #rwl-iqxin label {
+        margin: 0;
+        padding: 0;
+        font-weight: 500;
+    }
+
+    #rwl-iqxin #rwl-setbtn {
+        margin: 0 4px 0 0;
+        padding: 0 0 0 4px;
+        border: none;
+        border-radius: 2px;
+        cursor: pointer;
+        background: #fff;
+        color: #000;
+    } </style>
+</remove-web-limits-iqxin>
+<body>
+<a name="top"></a>
+<div id="page_begin_html">
+    <script type="text/javascript">window['__document_write_ajax_callbacks__']['2']();</script>
+    <script type="text/javascript">window['__document_write_ajax_callbacks__']['1']();</script>
+</div>
+
+<!--done-->
+<div id="home">
+    <div id="header">
+        <div id="blogTitle">
+            <a id="lnkBlogLogo" href="https://www.cnblogs.com/jwen1994/"><img id="blogLogo"
+                                                                              src="./Spring Boot 目录文件结构 - 认真对待世界的小白 - 博客园_files/logo.gif"
+                                                                              alt="返回主页"></a>
+
+            <!--done-->
+            <h1><a id="Header1_HeaderTitle" class="headermaintitle HeaderMainTitle"
+                   href="https://www.cnblogs.com/jwen1994/">认真对待世界的小白</a>
+            </h1>
+            <h2>
+
+            </h2>
+
+
+        </div><!--end: blogTitle 博客的标题和副标题 -->
+        <div id="navigator">
+
+            <ul id="navList">
+                <li><a id="blog_nav_sitehome" class="menu" href="https://www.cnblogs.com/">
+                    博客园</a>
+                </li>
+                <li>
+                    <a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/jwen1994/">
+                        首页</a>
+                </li>
+                <li>
+
+                    <a id="blog_nav_newpost" class="menu" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">
+                        新随笔</a>
+                </li>
+                <li>
+                    <a id="blog_nav_contact" class="menu"
+                       href="https://msg.cnblogs.com/send/%E8%AE%A4%E7%9C%9F%E5%AF%B9%E5%BE%85%E4%B8%96%E7%95%8C%E7%9A%84%E5%B0%8F%E7%99%BD">
+                        联系</a></li>
+                <li>
+                    <a id="blog_nav_rss" class="menu" href="javascript:void(0)"
+                       data-rss="https://www.cnblogs.com/jwen1994/rss/">订阅</a>
+                    <!--<partial name="./Shared/_XmlLink.cshtml" model="Model" /></li>--></li>
+                <li>
+                    <a id="blog_nav_admin" class="menu" href="https://i.cnblogs.com/">
+                        管理</a>
+                </li>
+            </ul>
+
+
+            <div class="blogStats">
+			
+			<span id="stats_post_count">随笔 - 
+214&nbsp; </span>
+                <span id="stats_article_count">文章 -
+0&nbsp; </span>
+                <span id="stats-comment_count">评论 -
+3</span>
+
+
+            </div><!--end: blogStats -->
+        </div><!--end: navigator 博客导航栏 -->
+    </div><!--end: header 头部 -->
+
+    <div id="main">
+        <div id="mainContent">
+            <div class="forFlow">
+                <div id="post_detail">
+                    <!--done-->
+                    <div id="topics">
+                        <div class="post">
+                            <h1 class="postTitle">
+
+                                <a id="cb_post_title_url" class="postTitle2 vertical-middle"
+                                   href="https://www.cnblogs.com/jwen1994/p/11184152.html">
+                                    <span>Spring Boot 目录文件结构</span>
+
+
+                                </a>
+
+                            </h1>
+                            <div class="clear"></div>
+                            <div class="postBody">
+
+                                <div id="cnblogs_post_body" class="blogpost-body ">
+                                    <h3 id="blogTitle0"><span style="font-size: 15px;"><strong>1.目录结构</strong></span>
+                                    </h3>
+                                    <p>src/main/java：存放代码</p>
+                                    <p>src/main/resources</p>
+                                    <ul>
+                                        <li>resources：（Spring Boot 默认的）存放资源文件</li>
+                                        <li>static：（Spring Boot 默认的）存放静态文件，比如 css、js、image, （访问方式
+                                            http://localhost:8080/js/main.js）
+                                        </li>
+                                        <li>public：（Spring Boot 默认的）存放公共文件</li>
+                                        <li>templates：（用户自己定义的，可以随便取名，但这里使用公认的文件名）存放静态页面，比如 jsp、html、tpl</li>
+                                        <li>config：（用户自己定义的，可以随便取名，但这里使用公认的文件名）存放配置文件，比如 application.properties</li>
+                                    </ul>
+                                    <p>&nbsp;<img
+                                            src="./Spring Boot 目录文件结构 - 认真对待世界的小白 - 博客园_files/1502218-20190714141240199-1505822047.png"
+                                            alt=""></p>
+                                    <p>&nbsp;</p>
+                                    <h3 id="blogTitle1"><span
+                                            style="font-size: 15px;"><strong>2.同个文件的加载顺序，静态资源文件</strong></span></h3>
+                                    <p>Spring Boot 默认会挨个从&nbsp;META/resources &gt; resources &gt; static &gt; public
+                                        里面找是否存在相应的资源，如果有则直接返回。</p>
+                                    <p>比如：我们在这几个文件夹下都新建一个 js 文件，看它会去加载哪个文件。</p>
+                                    <p>
+                                        <img src="./Spring Boot 目录文件结构 - 认真对待世界的小白 - 博客园_files/1502218-20190714141918091-1889831973.png"
+                                             alt=""></p>
+                                    <p>地址栏输入以下地址：<a
+                                            href="http://localhost:8080/test.js">http://localhost:8080/test.js</a>，这里我们没有在
+                                        resources 文件夹下建 test.js 文件，所以会去加载 static 文件夹下面的文件</p>
+                                    <p>
+                                        <img src="./Spring Boot 目录文件结构 - 认真对待世界的小白 - 博客园_files/1502218-20190714142016207-1482512920.png"
+                                             alt=""></p>
+                                    <p>上图所示，我们新建了一个 templates 文件夹，里面新建了一个 index.html 文件，因为 templates 不是 Spring Boot
+                                        默认文件夹，所以我们访问不到这个文件夹里的文件，即使其他文件夹没有同名文件。</p>
+                                    <p>要想访问，需要引入依赖<span style="color: #ff0000;">（注意：如果不引人这个依赖包，html 文件应该放在默认加载文件夹里面，比如 resources、static、public 这个几个文件夹，才可以访问）</span>
+                                    </p>
+                                    <div class="cnblogs_code">
+<pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">dependency</span><span
+        style="color: #0000ff;">&gt;</span>
+<span style="color: #0000ff;">　　&lt;</span><span style="color: #800000;">groupId</span><span style="color: #0000ff;">&gt;</span>org.springframework.boot<span
+            style="color: #0000ff;">&lt;/</span><span style="color: #800000;">groupId</span><span
+            style="color: #0000ff;">&gt;</span>
+<span style="color: #0000ff;">　　&lt;</span><span style="color: #800000;">artifactId</span><span style="color: #0000ff;">&gt;</span>spring-boot-starter-thymeleaf<span
+            style="color: #0000ff;">&lt;/</span><span style="color: #800000;">artifactId</span><span
+            style="color: #0000ff;">&gt;</span>
+<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">dependency</span><span style="color: #0000ff;">&gt;</span></pre>
+                                    </div>
+                                    <p>&nbsp;写一个测试映射</p>
+                                    <div class="cnblogs_code">
+<pre>@RequestMapping(value = "/api/v1/gopage"<span style="color: #000000;">)  
+</span><span style="color: #0000ff;">public</span><span style="color: #000000;"> Object index() {
+</span><span style="color: #0000ff;">　　return</span> "index"<span style="color: #000000;">;
+}</span></pre>
+                                    </div>
+                                    <p>输出效果</p>
+                                    <p>
+                                        <img src="./Spring Boot 目录文件结构 - 认真对待世界的小白 - 博客园_files/1502218-20190714144131338-1893254679.png"
+                                             alt=""></p>
+                                    <p>&nbsp;</p>
+                                    <p><strong><span style="font-size: 15px;">Spring Boot 给我们定义了一些默认资源文件夹及其加载顺序，但如果用户新增了一些自定义文件夹或者是想改变资源文件的加载顺序，可以在根目录下，新建一个 application.properties。</span></strong>
+                                    </p>
+                                    <p><span style="font-size: 15px;">&nbsp;&nbsp;<img
+                                            src="./Spring Boot 目录文件结构 - 认真对待世界的小白 - 博客园_files/1502218-20190714150045204-250263582.png"
+                                            alt=""></span></p>
+                                    <p>可以自己设置加载顺序，也可以添加自己新增的文件夹，如果用户自己新增&nbsp;application.properties，则Spring
+                                        Boot会去读这个文件来决定默认文件夹及其加载顺序</p>
+                                    <p>
+                                        <img src="./Spring Boot 目录文件结构 - 认真对待世界的小白 - 博客园_files/1502218-20190714150218498-851561846.png"
+                                             alt=""></p>
+                                    <div class="cnblogs_code">
+                                        <pre>spring.resources.static-locations = classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/ </pre>
+                                    </div>
+                                    <p>官网说明：<a
+                                            href="https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-developing-web-applications.html#boot-features-spring-mvc-static-content"
+                                            target="_blank">https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-developing-web-applications.html#boot-features-spring-mvc-static-content</a>
+                                    </p>
+                                    <p>&nbsp;</p>
+                                </div>
+                                <div id="MySignature"></div>
+                                <div class="clear"></div>
+                                <div id="blog_post_info_block">
+                                    <div id="BlogPostCategory">
+                                        分类:
+                                        <a href="https://www.cnblogs.com/jwen1994/category/1503393.html"
+                                           target="_blank">Spring Boot</a></div>
+
+
+                                    <div id="blog_post_info">
+                                        <div id="green_channel">
+                                            <a href="javascript:void(0);" id="green_channel_digg"
+                                               onclick="DiggIt(11184152,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+                                            <a id="green_channel_follow"
+                                               onclick="follow(&#39;986ee582-f5e2-45be-46d5-08d626927efc&#39;);"
+                                               href="javascript:void(0);">关注我</a>
+                                            <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;"
+                                               href="javascript:void(0);">收藏该文</a>
+                                            <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博"
+                                               onclick="ShareToTsina()"><img
+                                                    src="./Spring Boot 目录文件结构 - 认真对待世界的小白 - 博客园_files/icon_weibo_24.png"
+                                                    alt=""></a>
+                                            <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信"
+                                               onclick="shareOnWechat()"><img
+                                                    src="./Spring Boot 目录文件结构 - 认真对待世界的小白 - 博客园_files/wechat.png"
+                                                    alt=""></a>
+                                        </div>
+                                        <div id="author_profile">
+                                            <div id="author_profile_info" class="author_profile_info">
+                                                <a href="https://home.cnblogs.com/u/jwen1994/" target="_blank"><img
+                                                        src="./Spring Boot 目录文件结构 - 认真对待世界的小白 - 博客园_files/sample_face.gif"
+                                                        class="author_avatar" alt=""></a>
+                                                <div id="author_profile_detail" class="author_profile_info">
+                                                    <a href="https://home.cnblogs.com/u/jwen1994/">认真对待世界的小白</a><br>
+                                                    <a href="https://home.cnblogs.com/u/jwen1994/followees/">关注 -
+                                                        1</a><br>
+                                                    <a href="https://home.cnblogs.com/u/jwen1994/followers/">粉丝 - 6</a>
+                                                </div>
+                                            </div>
+                                            <div class="clear"></div>
+                                            <div id="author_profile_honor"></div>
+                                            <div id="author_profile_follow">
+                                                <a href="javascript:void(0);"
+                                                   onclick="follow(&#39;986ee582-f5e2-45be-46d5-08d626927efc&#39;);return false;">+加关注</a>
+                                            </div>
+                                        </div>
+                                        <div id="div_digg">
+                                            <div class="diggit" onclick="votePost(11184152,&#39;Digg&#39;)">
+                                                <span class="diggnum" id="digg_count">0</span>
+                                            </div>
+                                            <div class="buryit" onclick="votePost(11184152,&#39;Bury&#39;)">
+                                                <span class="burynum" id="bury_count">0</span>
+                                            </div>
+                                            <div class="clear"></div>
+                                            <div class="diggword" id="digg_tips">
+                                            </div>
+                                        </div>
+
+                                        <script type="text/javascript">
+                                            currentDiggType = 0;
+                                        </script>
+                                    </div>
+                                    <div class="clear"></div>
+                                    <div id="post_next_prev">
+
+                                        <a href="https://www.cnblogs.com/jwen1994/p/11182923.html" class="p_n_p_prefix">« </a>
+                                        上一篇： <a href="https://www.cnblogs.com/jwen1994/p/11182923.html"
+                                                title="发布于 2019-07-14 01:46">Spring MVC 文件上传</a>
+                                        <br>
+                                        <a href="https://www.cnblogs.com/jwen1994/p/11184566.html" class="p_n_p_prefix">» </a>
+                                        下一篇： <a href="https://www.cnblogs.com/jwen1994/p/11184566.html"
+                                                title="发布于 2019-07-14 17:11">Spring Boot 上传文件</a>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="postDesc">posted @
+                                <span id="post-date">2019-07-14 15:49</span>&nbsp;
+                                <a href="https://www.cnblogs.com/jwen1994/">认真对待世界的小白</a>&nbsp;
+                                阅读(<span id="post_view_count">2040</span>)&nbsp;
+                                评论(<span id="post_comment_count">1</span>)&nbsp;
+                                <a href="https://i.cnblogs.com/EditPosts.aspx?postid=11184152" rel="nofollow">编辑</a>&nbsp;
+                                <a href="javascript:void(0)" onclick="AddToWz(11184152);return false;">收藏</a></div>
+                        </div>
+
+
+                    </div><!--end: topics 文章、评论容器-->
+                </div>
+                <script src="./Spring Boot 目录文件结构 - 认真对待世界的小白 - 博客园_files/highlight.min.js.下载"></script>
+                <script>markdown_highlight();</script>
+                <script>
+                    var allowComments = true, cb_blogId = 464950, cb_blogApp = 'jwen1994',
+                        cb_blogUserGuid = '986ee582-f5e2-45be-46d5-08d626927efc';
+                    var cb_entryId = 11184152, cb_entryCreatedDate = '2019-07-14 15:49', cb_postType = 1;
+                    loadViewCount(cb_entryId);
+                    loadSideColumnAd();
+                </script>
+                <a name="!comments"></a>
+                <div id="blog-comments-placeholder">
+
+                    <div id="comment_pager_top">
+
+                    </div>
+
+                    <br>
+                    <div class="feedback_area_title">评论列表</div>
+                    <div class="feedbackNoItems">
+                        <div class="feedbackNoItems"></div>
+                    </div>
+                    <div class="feedbackItem">
+                        <div class="feedbackListSubtitle">
+                            <div class="feedbackManage">
+                                &nbsp;&nbsp;
+
+                                <span class="comment_actions">
+    <a href="javascript:void(0);"
+       onclick="return ReplyComment(4370120, &#39;pgSUNv3X62XuyIbjTDExeMP6PkVEFdHzv4g7U1jV29YoRBJbXhrPLg==&#39;)">
+        回复
+    </a>
+    <a href="javascript:void(0);"
+       onclick="return QuoteComment(4370120, &#39;pgSUNv3X62XuyIbjTDExeMP6PkVEFdHzv4g7U1jV29YoRBJbXhrPLg==&#39;)">
+        引用
+    </a>
+    
+    
+</span>
+
+
+                            </div>
+
+                            <a href="https://www.cnblogs.com/jwen1994/p/11184152.html#4370120" class="layer">#1楼</a>
+                            <a name="4370120" id="comment_anchor_4370120"></a>
+
+                            <span id="comment-maxId" style="display:none">4370120</span>
+                            <span id="comment-maxDate" style="display:none">2019/9/25 下午4:50:08</span>
+
+                            <span class="comment_date">2019-09-25 16:50</span>
+
+
+                            <a id="a_comment_author_4370120" href="https://www.cnblogs.com/laorenzhenhaoa/"
+                               target="_blank">花满园</a>
+
+                        </div>
+                        <div class="feedbackCon">
+
+                            <div id="comment_body_4370120" data-format-type="Ubb" class="blog_comment_body cnblogs-ubb">
+                                好的
+                            </div>
+                            <div class="comment_vote">
+                                <span class="comment_error" style="color: red"></span>
+                                <a href="javascript:void(0);" class="comment_digg"
+                                   onclick="return voteComment(4370120, &#39;Digg&#39;, this.parentElement, false);">
+                                    支持(0)
+                                </a>
+                                <a href="javascript:void(0);" class="comment_burry"
+                                   onclick="return voteComment(4370120, &#39;Bury&#39;, this.parentElement, false);">
+                                    反对(0)
+                                </a>
+                            </div>
+                            <span id="comment_4370120_avatar" style="display:none">
+            https://pic.cnblogs.com/face/942639/20160816114348.png
+        </span>
+
+                        </div>
+                    </div>
+
+                    <div id="comment_pager_bottom">
+
+                    </div>
+
+
+                </div>
+                <script>
+                    var commentManager = new blogCommentManager();
+                    commentManager.renderComments(0);
+                </script>
+                <div id="comment_form" class="commentform">
+                    <a name="commentform"></a>
+                    <div id="divCommentShow"></div>
+                    <div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);"
+                                                                                 onclick="return RefreshCommentList();"
+                                                                                 id="lnk_RefreshComments" runat="server"
+                                                                                 clientidmode="Static">刷新评论</a><a
+                            href="https://www.cnblogs.com/jwen1994/p/11184152.html#" onclick="return RefreshPage();">刷新页面</a><a
+                            href="https://www.cnblogs.com/jwen1994/p/11184152.html#top">返回顶部</a></div>
+                    <div id="comment_form_container" style="visibility: visible;">
+                        <script type="text/javascript"
+                                src="./Spring Boot 目录文件结构 - 认真对待世界的小白 - 博客园_files/mention.js.下载"></script>
+                        <div id="commentform_title">发表评论</div>
+                        <span id="tip_comment" style="color:Red"></span>
+                        <div class="commentbox_main comment_textarea">
+                            <div class="commentbox_title">
+                                <div class="commentbox_title_left">
+                                    <span id="btn_edit_comment" class="commentbox_tab active" title="编辑评论">编辑</span>
+                                    <span id="btn_preview_comment" class="commentbox_tab" title="Markdown 预览">预览</span>
+                                </div>
+                                <div class="commentbox_title_right">
+            <span id="ubb_bold" class="comment_icon" alt="粗体" title="添加粗体(Ctrl + B)">
+                <svg class="comment_svg" version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <g fill-rule="evenodd">
+                        <path d="m13.221 19c1.4414 0 2.5793-0.27451 3.3759-0.82353 0.92931-0.66667 1.4034-1.7059 1.4034-3.1176 0-0.94118-0.22759-1.7059-0.66379-2.2549-0.45517-0.56863-1.119-0.94118-2.0103-1.1176 0.68276-0.27451 1.1948-0.64706 1.5552-1.1569 0.36034-0.54902 0.55-1.2157 0.55-2 0-1.0588-0.36034-1.902-1.0621-2.5294-0.75862-0.66667-1.8207-1-3.1672-1h-6.2017v14h6.2207zm-0.82196-8h-3.3987v-4h3.4367c0.91139 0 1.557 0.15686 1.9747 0.47059 0.37975 0.29412 0.58861 0.78431 0.58861 1.451 0 0.72549-0.20886 1.2549-0.58861 1.5882-0.39873 0.31373-1.0633 0.4902-2.0127 0.4902zm0.52612 6h-3.9249v-4h3.9855c1.052 0 1.8208 0.16216 2.3064 0.48649 0.46532 0.32432 0.70809 0.84685 0.70809 1.5856 0 0.72072-0.3237 1.2252-0.9711 1.5495-0.50578 0.25225-1.2139 0.37838-2.104 0.37838z"
+                              fill-rule="nonzero" stroke-width=".35"></path>
+                    </g>
+                </svg>
+            </span>
+                                    <span id="ubb_url" class="comment_icon" title="添加链接(Ctrl + K)" alt="链接">
+                <svg class="comment_svg comment_svg_stroke" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <g fill-rule="evenodd">
+                        <g transform="translate(4 4)" fill-rule="nonzero" stroke-width=".4">
+                            <path d="m6.304 9.696c-0.288-0.288-0.512-0.608-0.704-0.992-0.16-0.32-0.032-0.704 0.288-0.864 0.32-0.16 0.704-0.032 0.864 0.288 0.128 0.224 0.256 0.448 0.448 0.64 0.928 0.928 2.432 0.928 3.36 0l3.36-3.328c0.928-0.928 0.928-2.432 0-3.36s-2.432-0.928-3.36 0l-2.272 2.272c-0.256 0.256-0.64 0.256-0.896 0-0.256-0.256-0.256-0.64 0-0.896l2.272-2.272c1.44-1.44 3.744-1.44 5.184 0 1.44 1.44 1.44 3.744 0 5.184l-3.36 3.296c-0.704 0.704-1.632 1.088-2.592 1.088-0.928 0-1.856-0.352-2.592-1.056z"></path>
+                            <path d="m3.776 15.808c-0.992 0-1.888-0.384-2.592-1.056-1.44-1.44-1.44-3.744 0-5.184l3.328-3.328c1.44-1.44 3.744-1.44 5.184 0 0.288 0.288 0.544 0.64 0.736 1.024 0.16 0.32 0 0.704-0.32 0.864-0.32 0.16-0.704 0-0.864-0.32-0.128-0.256-0.288-0.48-0.48-0.672-0.928-0.928-2.432-0.928-3.36 0l-3.296 3.328c-0.928 0.928-0.928 2.432 0 3.36 0.448 0.448 1.056 0.704 1.664 0.704 0.608 0 1.248-0.256 1.664-0.704l2.112-2.112c0.256-0.256 0.64-0.256 0.896 0s0.256 0.64 0 0.896l-2.112 2.112c-0.672 0.704-1.568 1.088-2.56 1.088z"></path>
+                        </g>
+                    </g>
+                </svg>
+            </span>
+                                    <span id="ubb_code" class="comment_icon" title="添加代码(Ctrl + `)" alt="代码">
+                <svg class="comment_svg comment_svg_stroke" version="1.1" viewBox="0 0 24 24"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <g fill-rule="evenodd">
+                        <g transform="translate(16 6)" stroke-linecap="round" stroke-width="2">
+                            <line x1=".5" x2="4.5" y1=".7" y2="6.3"></line>
+                            <line transform="translate(2.5 9.1) scale(1 -1) translate(-2.5 -9.1)" x1=".5" x2="4.5"
+                                  y1="6.3" y2="11.9"></line>
+                        </g>
+                        <g transform="translate(3 6.1)" stroke-linecap="round" stroke-width="2">
+                            <line transform="translate(2.5 3.5) scale(-1 1) translate(-2.5 -3.5)" x1=".5" x2="4.5"
+                                  y1=".7" y2="6.3"></line>
+                            <line transform="translate(2.5 9.1) scale(-1) translate(-2.5 -9.1)" x1=".5" x2="4.5"
+                                  y1="6.3" y2="11.9"></line>
+                        </g>
+                        <path transform="translate(12 12.5) scale(1 -1) translate(-12 -12.5)"
+                              d="m10.778 7.1249c0.50008-0.11366 0.9978 0.16911 1.1643 0.64128l0.032406 0.11223 2 8.8c0.1224 0.53855-0.21496 1.0744-0.75351 1.1968-0.50008 0.11366-0.9978-0.16911-1.1643-0.64128l-0.032406-0.11223-2-8.8c-0.1224-0.53855 0.21496-1.0744 0.75351-1.1968z"
+                              fill-rule="nonzero" stroke-width=".25"></path>
+                    </g>
+                </svg>
+            </span>
+                                    <span id="ubb_quote" class="comment_icon" title="添加引用(Ctrl + Q)" alt="引用">
+                <svg class="comment_svg" version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <g fill-rule="evenodd">
+                        <g transform="translate(5 4)" fill-rule="nonzero" stroke-width=".25">
+                            <path d="m5.0013 15v-5.2702h-2.8008c-0.13413-3.3762 1.2004-6.2143 4.0009-8.5135l-1.2-1.2163c-3.335 2.2996-5.0013 5.8119-5.0013 10.54v4.4595h5.0013-1.285e-5zm8.7987 0v-5.2702h-2.8008c-0.13453-3.3762 1.2-6.2143 4.0009-8.5135l-1.2-1.2163c-3.335 2.2996-5.0013 5.8119-5.0013 10.54v4.4595h5.0013-1.28e-5z"></path>
+                        </g>
+                    </g>
+                </svg>
+            </span>
+                                    <span id="ubb_img" class="comment_icon" alt="图片" title="上传图片(Ctrl + I)">
+                <svg class="comment_svg" version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <g fill-rule="evenodd">
+                        <g transform="translate(3 3.8)" fill-rule="nonzero">
+                            <path d="m14.1 0.58235h-11.2c-1.32 0-2.4 1.0482-2.4 2.3294v10.871c0 1.2812 1.08 2.3294 2.4 2.3294h11.2c1.32 0 2.4-1.0482 2.4-2.3294v-10.871c0-1.2812-1.08-2.3294-2.4-2.3294zm0.7 13.569-3.63-3.4165 1.33-1.2909c0.21-0.20382 0.59-0.20382 0.8 0l1.6 1.5529v2.7856c0 0.13588-0.04 0.26206-0.1 0.36882zm-11.9-12.016h11.2c0.44 0 0.8 0.34941 0.8 0.77647v5.8915l-0.47-0.45618c-0.84-0.825-2.22-0.825-3.07 0l-1.35 1.3103-2.39-2.2421c-0.85-0.825-2.22-0.825-3.05-0.019412l-2.48 2.2615v-6.7456c0.01-0.42706 0.37-0.77647 0.81-0.77647zm-0.8 11.647v-1.9897l3.6-3.2806c0.21-0.20382 0.58-0.21353 0.81 0.0097059l6.43 6.0371h-10.04c-0.44 0-0.8-0.33971-0.8-0.77647z"></path>
+                            <ellipse cx="10.5" cy="6.4059" rx="1" ry="1"></ellipse>
+                        </g>
+                    </g>
+                </svg>
+            </span>
+                                </div>
+                            </div>
+                            <div style="display:none">
+                                <span id="comment_edit_id"></span>
+                                <span id="span_parentcomment_id"></span>
+                                <span id="span_parent_id"></span>
+                                <span id="span_comment_replyto"></span>
+                                <span id="span_comment_posted"></span>
+                                <span id="span_current_user_id">a95d4c97-cfc2-457d-c528-08d63c788594</span>
+                            </div>
+                            <textarea id="tbCommentBody" placeholder="支持 Markdown"></textarea>
+                            <div id="tbCommentBodyPreview" class="feedbackCon" style="display: none">
+                                <div id="tbCommentBodyPreviewBody"
+                                     class="blog_comment_body comment_preview cnblogs-markdown"></div>
+                            </div>
+                            <div class="commentbox_footer">
+                                <a class="comment_option">Markdown 帮助</a>
+                                <span id="btn_comment_options" class="comment_option">
+            <input id="ubb_auto_completion" class="inline_middle" type="checkbox">
+            <label class="inline_middle" for="ubb_auto_completion">自动补全</label>
+        </span>
+                            </div>
+                        </div>
+                        <p id="commentbox_opt">
+                            <input id="btn_comment_submit" type="button" class="comment_btn" title="提交评论(Ctrl + Enter)"
+                                   value="提交评论">
+                            <span id="span_comment_canceledit" style="display:none"><a href="javascript:void(0);"
+                                                                                       onclick="return CancelCommentEdit()">不改了</a></span>
+                            <a href="javascript:void(0);" onclick="return logout();">退出</a>
+                            <a id="commentbox_opt_sub" href="javascript:void(0);" title="订阅后有新评论时会邮件通知您"
+                               onclick="commentManager.Subscribe()">订阅评论</a>
+                        </p>
+                        <div id="tip_comment2" style="color:Red"></div>
+                        <p>[Ctrl+Enter快捷键提交]</p>
+                        <script>var commentEditor = initCommentEditor("tbCommentBody");</script>
+                    </div>
+                    <div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+                    <div id="ad_t2"><a href="https://brands.cnblogs.com/huawei" target="_blank"
+                                       onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-华为专区&#39;)">【推荐】了不起的开发者，势不可挡的华为，园子里的品牌专区</a><br><a
+                            href="https://ai.youdao.com/third-anniversary.s?keyfrom=cnblogs" target="_blank"
+                            onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-网易有道&#39;)">【推荐】有道智云周年庆，API服务大放送，注册即送100元体验金！</a><br><a
+                            href="http://www.ucancode.com/index.htm" target="_blank"
+                            onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-ucancode&#39;)">【推荐】超50万行VC++源码:
+                        大型组态工控、电力仿真CAD与GIS源码库</a><br><a
+                            href="https://developer.aliyun.com/article/715141?utm_content=g_1000088938" target="_blank"
+                            onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-阿里云开发者社区&#39;)">【推荐】12知识点+20干货案例+110面试题，助你拿offer
+                        | Python面试宝典</a><br></div>
+                    <div id="opt_under_post"></div>
+                    <div id="cnblogs_c1" class="c_ad_block"><a
+                            href="https://ai.youdao.com/third-anniversary.s?keyfrom=cnblogs" target="_blank"><img
+                            width="300" height="250"
+                            src="./Spring Boot 目录文件结构 - 认真对待世界的小白 - 博客园_files/2016690-20200717105942214-957138008.png"
+                            alt="有道智云周年庆"
+                            onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;C1-网易有道&#39;);"></a>
+                    </div>
+                    <div id="under_post_news"></div>
+                    <div id="cnblogs_c2" class="c_ad_block" style="display: none;">
+                        <div id="div-gpt-ad-1592366332455-0" style="width: 468px; height: 60px;"></div>
+                    </div>
+                    <div id="under_post_kb">
+                        <div class="itnews c_ad_block">
+                            <b>最新 IT 新闻</b>:
+                            <br>
+                            · <a href="https://news.cnblogs.com/n/667503/" target="_blank">西安交警官宣！“电子证照”＝纸质证件
+                            适用于路面核查</a>
+                            <br>
+                            · <a href="https://news.cnblogs.com/n/667502/" target="_blank">Lyft将向驾驶员分发约6万个汽车隔板
+                            以抵御冠状病毒</a>
+                            <br>
+                            · <a href="https://news.cnblogs.com/n/667501/" target="_blank">Thunderbird 78 稳定版发布</a>
+                            <br>
+                            · <a href="https://news.cnblogs.com/n/667500/" target="_blank">女子被骗后找程序员朋友破解诈骗网站
+                            发现千条受害者信息</a>
+                            <br>
+                            · <a href="https://news.cnblogs.com/n/667499/" target="_blank">苹果宣布将弃用代码库中的非包容性语言</a>
+                            <br>
+                            » <a href="https://news.cnblogs.com/" title="IT 新闻" target="_blank">更多新闻...</a>
+                        </div>
+                    </div>
+                    <div id="HistoryToday" class="c_ad_block"></div>
+                    <script type="text/javascript">
+                        fixPostBody();
+                        deliverBigBanner();
+                        setTimeout(function () {
+                            incrementViewCount(cb_entryId);
+                        }, 50);
+                        deliverT2();
+                        deliverC1C2();
+                        loadNewsAndKb();
+                        loadBlogSignature();
+                        LoadPostCategoriesTags(cb_blogId, cb_entryId);
+                        LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+                        GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+                        loadOptUnderPost();
+                        GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+                    </script>
+                </div>
+            </div><!--end: forFlow -->
+        </div><!--end: mainContent 主体内容容器-->
+
+        <div id="sideBar">
+            <div id="sideBarMain">
+
+                <div id="sidebar_news" class="newsItem"><!--done-->
+                    <h3 class="catListTitle">公告</h3>
+
+                    <div id="blog-news">
+
+                        <div id="profile_block">
+                            昵称：
+                            <a href="https://home.cnblogs.com/u/jwen1994/">
+                                认真对待世界的小白
+                            </a>
+                            <br>
+                            园龄：
+                            <a href="https://home.cnblogs.com/u/jwen1994/" title="入园时间：2018-09-30">
+                                1年9个月
+                            </a>
+                            <br>
+                            粉丝：
+                            <a href="https://home.cnblogs.com/u/jwen1994/followers/">
+                                6
+                            </a>
+                            <br>
+                            关注：
+                            <a href="https://home.cnblogs.com/u/jwen1994/followees/">
+                                1
+                            </a>
+                            <div id="p_b_follow">
+                                <a href="javascript:void(0)"
+                                   onclick="follow(&#39;986ee582-f5e2-45be-46d5-08d626927efc&#39;)">+加关注</a></div>
+                            <script>getFollowStatus('986ee582-f5e2-45be-46d5-08d626927efc');</script>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div id="sidebar_ad"></div>
+                <div id="blog-calendar" style="">
+
+                    <table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="Calendar" border="0">
+                        <tbody>
+                        <tr>
+                            <td colspan="7">
+                                <table class="CalTitle" cellspacing="0" border="0">
+                                    <tbody>
+                                    <tr>
+                                        <td class="CalNextPrev">
+                                            <a href="javascript:void(0);"
+                                               onclick="loadBlogCalendar(&#39;2020/06/19&#39;); return false;">&lt;</a>
+                                        </td>
+                                        <td align="center">2020年7月</td>
+                                        <td align="right" class="CalNextPrev">
+                                            <a href="javascript:void(0);"
+                                               onclick="loadBlogCalendar(&#39;2020/08/19&#39;); return false;">&gt;</a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="CalDayHeader" align="center" abbr="日" scope="col">日</th>
+                            <th class="CalDayHeader" align="center" abbr="一" scope="col">一</th>
+                            <th class="CalDayHeader" align="center" abbr="二" scope="col">二</th>
+                            <th class="CalDayHeader" align="center" abbr="三" scope="col">三</th>
+                            <th class="CalDayHeader" align="center" abbr="四" scope="col">四</th>
+                            <th class="CalDayHeader" align="center" abbr="五" scope="col">五</th>
+                            <th class="CalDayHeader" align="center" abbr="六" scope="col">六</th>
+                        </tr>
+                        <tr>
+                            <td class="CalOtherMonthDay" align="center">28</td>
+                            <td class="CalOtherMonthDay" align="center">29</td>
+                            <td class="CalOtherMonthDay" align="center">30</td>
+                            <td class="" align="center">
+                                1
+                            </td>
+                            <td class="" align="center">
+                                2
+                            </td>
+                            <td class="" align="center">
+                                3
+                            </td>
+                            <td class="CalWeekendDay" align="center">
+                                4
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="CalWeekendDay" align="center">
+                                5
+                            </td>
+                            <td class="" align="center">
+                                6
+                            </td>
+                            <td class="" align="center">
+                                7
+                            </td>
+                            <td class="" align="center">
+                                8
+                            </td>
+                            <td class="" align="center">
+                                9
+                            </td>
+                            <td class="" align="center">
+                                10
+                            </td>
+                            <td class="CalWeekendDay" align="center">
+                                11
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="CalWeekendDay" align="center">
+                                12
+                            </td>
+                            <td class="" align="center">
+                                13
+                            </td>
+                            <td class="" align="center">
+                                14
+                            </td>
+                            <td class="" align="center">
+                                15
+                            </td>
+                            <td class="" align="center">
+                                16
+                            </td>
+                            <td class="" align="center">
+                                17
+                            </td>
+                            <td class="CalWeekendDay" align="center">
+                                18
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="CalTodayDay" align="center">
+                                19
+                            </td>
+                            <td class="" align="center">
+                                20
+                            </td>
+                            <td class="" align="center">
+                                21
+                            </td>
+                            <td class="" align="center">
+                                22
+                            </td>
+                            <td class="" align="center">
+                                23
+                            </td>
+                            <td class="" align="center">
+                                24
+                            </td>
+                            <td class="CalWeekendDay" align="center">
+                                25
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="CalWeekendDay" align="center">
+                                26
+                            </td>
+                            <td class="" align="center">
+                                27
+                            </td>
+                            <td class="" align="center">
+                                28
+                            </td>
+                            <td class="" align="center">
+                                29
+                            </td>
+                            <td class="" align="center">
+                                30
+                            </td>
+                            <td class="" align="center">
+                                31
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                1
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="CalOtherMonthDay" align="center">
+                                2
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                3
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                4
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                5
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                6
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                7
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                8
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <script>loadBlogDefaultCalendar();</script>
+
+                <div id="leftcontentcontainer">
+                    <div id="blog-sidecolumn">
+                        <!-- 搜索 -->
+                        <div id="sidebar_search" class="sidebar-block">
+                            <div id="sidebar_search" class="mySearch">
+                                <h3 class="catListTitle">搜索</h3>
+                                <div id="sidebar_search_box">
+                                    <div id="widget_my_zzk" class="div_my_zzk">
+                                        <input type="text" id="q" onkeydown="return zzk_go_enter(event);"
+                                               class="input_my_zzk">&nbsp;<input onclick="zzk_go()" type="button"
+                                                                                 value="找找看" id="btnZzk"
+                                                                                 class="btn_my_zzk">
+                                    </div>
+                                    <div id="widget_my_google" class="div_my_zzk">
+                                        <input type="text" name="google_q" id="google_q"
+                                               onkeydown="return google_go_enter(event);"
+                                               class="input_my_zzk">&nbsp;<input onclick="google_go()" type="button"
+                                                                                 value="谷歌搜索" class="btn_my_zzk">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 常用链接 -->
+                        <div id="sidebar_shortcut" class="sidebar-block">
+                            <div class="catListLink">
+                                <h3 class="catListTitle">
+                                    常用链接
+                                </h3>
+                                <ul>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/p/" title="我的博客的随笔列表">我的随笔</a>
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/MyComments.html" title="我的发表过的评论列表">我的评论</a>
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/OtherPosts.html" title="我评论过的随笔列表">我的参与</a>
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/RecentComments.html"
+                                           title="我的博客的评论列表">最新评论</a>
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/tag/" title="我的博客的标签列表">我的标签</a>
+                                    </li>
+
+                                </ul>
+                                <div id="itemListLin_con" style="display:none;">
+                                    <ul>
+
+                                    </ul>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <!-- 最新随笔 -->
+
+
+                        <!-- 我的标签 -->
+                        <div id="sidebar_toptags" class="sidebar-block">
+
+                        </div>
+
+                        <!-- 积分与排名 -->
+
+
+                        <!-- 随笔分类、随笔档案、文章分类、新闻分类、相册、链接 -->
+                        <div id="sidebar_categories">
+
+                            <div id="sidebar_postcategory" class="catListPostCategory sidebar-block">
+                                <h3 class="catListTitle">
+
+
+                                    随笔分类
+
+
+                                </h3>
+
+
+                                <ul>
+
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/category/1672245.html" rel=""
+                                           target="">
+                                            Elastic Search(9)
+                                        </a>
+
+
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/category/1467843.html" rel=""
+                                           target="">
+                                            Git(1)
+                                        </a>
+
+
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/category/1379970.html" rel=""
+                                           target="">
+                                            Hibernate(1)
+                                        </a>
+
+
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/category/1641523.html" rel=""
+                                           target="">
+                                            Java 基础(6)
+                                        </a>
+
+
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/category/1685737.html" rel=""
+                                           target="">
+                                            Java 类加载机制与反射(6)
+                                        </a>
+
+
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/category/1638383.html" rel=""
+                                           target="">
+                                            Java 输入/输出(9)
+                                        </a>
+
+
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/category/1410621.html" rel=""
+                                           target="">
+                                            Java 线程(9)
+                                        </a>
+
+
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/category/1365411.html" rel=""
+                                           target="">
+                                            Java设计模式(14)
+                                        </a>
+
+
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/category/1365412.html" rel=""
+                                           target="">
+                                            Java杂项(1)
+                                        </a>
+
+
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/category/1402001.html" rel=""
+                                           target="">
+                                            jQuery(15)
+                                        </a>
+
+
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/category/1528789.html" rel=""
+                                           target="">
+                                            Maven(5)
+                                        </a>
+
+
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/category/1379971.html" rel=""
+                                           target="">
+                                            Mybatis(9)
+                                        </a>
+
+
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/category/1581457.html" rel=""
+                                           target="">
+                                            MySql(8)
+                                        </a>
+
+
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/category/1777705.html" rel=""
+                                           target="">
+                                            Python(10)
+                                        </a>
+
+
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/category/1639835.html" rel=""
+                                           target="">
+                                            Redis(12)
+                                        </a>
+
+
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/category/1646383.html" rel=""
+                                           target="">
+                                            RocketMQ(10)
+                                        </a>
+
+
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/category/1789305.html" rel=""
+                                           target="">
+                                            Sharding-JDBC(7)
+                                        </a>
+
+
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/category/1390941.html" rel=""
+                                           target="">
+                                            Spring(12)
+                                        </a>
+
+
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/category/1503393.html" rel=""
+                                           target="">
+                                            Spring Boot(20)
+                                        </a>
+
+
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/category/1534019.html" rel=""
+                                           target="">
+                                            Spring Cloud(5)
+                                        </a>
+
+
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/category/1494246.html" rel=""
+                                           target="">
+                                            Spring MVC(16)
+                                        </a>
+
+
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/category/1510171.html" rel=""
+                                           target="">
+                                            Spring 数据篇(5)
+                                        </a>
+
+
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/category/1471937.html" rel=""
+                                           target="">
+                                            Vue(12)
+                                        </a>
+
+
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/category/1426871.html" rel=""
+                                           target="">
+                                            WebService(3)
+                                        </a>
+
+
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/category/1767750.html" rel=""
+                                           target="">
+                                            初识算法(3)
+                                        </a>
+
+
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/category/1525264.html" rel=""
+                                           target="">
+                                            任务调度和异步执行器(5)
+                                        </a>
+
+
+                                    </li>
+
+                                </ul>
+
+
+                            </div>
+                            <div id="sidebar_postarchive" class="catListPostArchive sidebar-block">
+                                <h3 class="catListTitle">
+
+
+                                    随笔档案
+
+
+                                </h3>
+
+
+                                <ul>
+
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/archive/2020/06.html" rel=""
+                                           target="">
+                                            2020年6月(18)
+                                        </a>
+
+
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/archive/2020/05.html" rel=""
+                                           target="">
+                                            2020年5月(5)
+                                        </a>
+
+
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/archive/2020/04.html" rel=""
+                                           target="">
+                                            2020年4月(7)
+                                        </a>
+
+
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/archive/2020/03.html" rel=""
+                                           target="">
+                                            2020年3月(14)
+                                        </a>
+
+
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/archive/2020/02.html" rel=""
+                                           target="">
+                                            2020年2月(32)
+                                        </a>
+
+
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/archive/2020/01.html" rel=""
+                                           target="">
+                                            2020年1月(1)
+                                        </a>
+
+
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/archive/2019/12.html" rel=""
+                                           target="">
+                                            2019年12月(3)
+                                        </a>
+
+
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/archive/2019/11.html" rel=""
+                                           target="">
+                                            2019年11月(5)
+                                        </a>
+
+
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/archive/2019/10.html" rel=""
+                                           target="">
+                                            2019年10月(1)
+                                        </a>
+
+
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/archive/2019/09.html" rel=""
+                                           target="">
+                                            2019年9月(5)
+                                        </a>
+
+
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/archive/2019/08.html" rel=""
+                                           target="">
+                                            2019年8月(21)
+                                        </a>
+
+
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/archive/2019/07.html" rel=""
+                                           target="">
+                                            2019年7月(25)
+                                        </a>
+
+
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/archive/2019/06.html" rel=""
+                                           target="">
+                                            2019年6月(20)
+                                        </a>
+
+
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/archive/2019/05.html" rel=""
+                                           target="">
+                                            2019年5月(10)
+                                        </a>
+
+
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/archive/2019/04.html" rel=""
+                                           target="">
+                                            2019年4月(7)
+                                        </a>
+
+
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/archive/2019/03.html" rel=""
+                                           target="">
+                                            2019年3月(17)
+                                        </a>
+
+
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/archive/2019/02.html" rel=""
+                                           target="">
+                                            2019年2月(3)
+                                        </a>
+
+
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/archive/2019/01.html" rel=""
+                                           target="">
+                                            2019年1月(2)
+                                        </a>
+
+
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/archive/2018/12.html" rel=""
+                                           target="">
+                                            2018年12月(9)
+                                        </a>
+
+
+                                    </li>
+                                    <li>
+
+                                        <a href="https://www.cnblogs.com/jwen1994/archive/2018/11.html" rel=""
+                                           target="">
+                                            2018年11月(9)
+                                        </a>
+
+
+                                    </li>
+
+                                </ul>
+
+
+                            </div>
+
+                        </div>
+
+                        <!-- 最新评论 -->
+                        <div id="sidebar_recentcomments" class="sidebar-block">
+                            <div class="catListComment">
+                                <h3 class="catListTitle">最新评论</h3>
+
+                                <div class="RecentCommentBlock">
+                                    <ul>
+                                        <li class="recent_comment_title"><a
+                                                href="https://www.cnblogs.com/jwen1994/p/10990843.html">1. Re:Vue 中使用
+                                            Axios</a></li>
+                                        <li class="recent_comment_body"><p>就服你， 你这是全程用vue.js 脱离用脚手架来写的呀</p>
+                                        </li>
+                                        <li class="recent_comment_author">--十色鹿</li>
+                                        <li class="recent_comment_title"><a
+                                                href="https://www.cnblogs.com/jwen1994/p/11146695.html">2. Re:Spring MVC
+                                            使用矩阵变量绑定参数</a></li>
+                                        <li class="recent_comment_body">你写的太好了</li>
+                                        <li class="recent_comment_author">--SUPERADMIN2</li>
+                                        <li class="recent_comment_title"><a
+                                                href="https://www.cnblogs.com/jwen1994/p/11184152.html">3. Re:Spring
+                                            Boot 目录文件结构</a></li>
+                                        <li class="recent_comment_body">好的</li>
+                                        <li class="recent_comment_author">--花满园</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                        <!-- 阅读排行榜 -->
+                        <div id="sidebar_topviewedposts" class="sidebar-block">
+                            <div class="catListView">
+                                <h3 class="catListTitle">阅读排行榜</h3>
+                                <div id="TopViewPostsBlock">
+                                    <ul style="word-break:break-all">
+                                        <li>
+                                            <a href="https://www.cnblogs.com/jwen1994/p/9984684.html">
+                                                1. java中去除字符串(String)中的换行字符(\r \n \t)(35437)
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.cnblogs.com/jwen1994/p/10568301.html">
+                                                2. jQuery 移除事件(2142)
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.cnblogs.com/jwen1994/p/10982608.html">
+                                                3. Vue 获取DOM元素(2116)
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.cnblogs.com/jwen1994/p/11184152.html">
+                                                4. Spring Boot 目录文件结构(2043)
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.cnblogs.com/jwen1994/p/11184566.html">
+                                                5. Spring Boot 上传文件(1925)
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <!-- 评论排行榜 -->
+                        <div id="sidebar_topcommentedposts" class="sidebar-block">
+                            <div class="catListFeedback">
+                                <h3 class="catListTitle">评论排行榜</h3>
+                                <div id="TopFeedbackPostsBlock">
+                                    <ul style="word-break:break-all">
+                                        <li>
+                                            <a href="https://www.cnblogs.com/jwen1994/p/11184152.html">
+                                                1. Spring Boot 目录文件结构(1)
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.cnblogs.com/jwen1994/p/11146695.html">
+                                                2. Spring MVC 使用矩阵变量绑定参数(1)
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.cnblogs.com/jwen1994/p/10990843.html">
+                                                3. Vue 中使用 Axios(1)
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <!-- 推荐排行榜 -->
+                        <div id="sidebar_topdiggedposts" class="sidebar-block">
+
+                            <div id="topdigg_posts_wrap">
+                                <div class="catListView">
+                                    <h3 class="catListTitle">推荐排行榜</h3>
+                                    <div id="TopDiggPostsBlock">
+                                        <ul style="word-break: break-all">
+                                            <li>
+                                                <a href="https://www.cnblogs.com/jwen1994/p/12257958.html">
+                                                    1. Redis 读写分离(1)
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://www.cnblogs.com/jwen1994/p/10896621.html">
+                                                    2. 集中式和分布式版本控制系统的区别(1)
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://www.cnblogs.com/jwen1994/p/11299355.html">
+                                                    3. Spring 中使用 Hibernate(1)
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://www.cnblogs.com/jwen1994/p/11235210.html">
+                                                    4. Spring 对 DAO 的支持(1)
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://www.cnblogs.com/jwen1994/p/11146695.html">
+                                                    5. Spring MVC 使用矩阵变量绑定参数(1)
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script>loadBlogSideColumn();</script>
+                </div>
+
+            </div><!--end: sideBarMain -->
+        </div><!--end: sideBar 侧边栏容器 -->
+        <div class="clear"></div>
+    </div><!--end: main -->
+    <div class="clear"></div>
+    <div id="footer">
+        <!--done-->
+        Copyright © 2020 认真对待世界的小白
+        <br><span id="poweredby">Powered by .NET Core on Kubernetes</span>
+
+
+    </div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+<script type="text/javascript">
+    /*
+        功能：生成博客目录的JS工具
+        测试：IE8，火狐，google测试通过
+        孤傲苍狼
+        2014-5-11
+    */
+    var BlogDirectory = {
+        /*
+            获取元素位置，距浏览器左边界的距离（left）和距浏览器上边界的距离（top）
+        */
+        getElementPosition: function (ele) {
+            var topPosition = 0;
+            var leftPosition = 0;
+            while (ele) {
+                topPosition += ele.offsetTop;
+                leftPosition += ele.offsetLeft;
+                ele = ele.offsetParent;
+            }
+            return {top: topPosition, left: leftPosition};
+        },
+
+        /*
+        获取滚动条当前位置
+        */
+        getScrollBarPosition: function () {
+            var scrollBarPosition = document.body.scrollTop || document.documentElement.scrollTop;
+            return scrollBarPosition;
+        },
+
+        /*
+        移动滚动条，finalPos 为目的位置，internal 为移动速度
+        */
+        moveScrollBar: function (finalpos, interval) {
+
+            //若不支持此方法，则退出
+            if (!window.scrollTo) {
+                return false;
+            }
+
+            //窗体滚动时，禁用鼠标滚轮
+            window.onmousewheel = function () {
+                return false;
+            };
+
+            //清除计时
+            if (document.body.movement) {
+                clearTimeout(document.body.movement);
+            }
+
+            var currentpos = BlogDirectory.getScrollBarPosition();//获取滚动条当前位置
+
+            var dist = 0;
+            if (currentpos == finalpos) {//到达预定位置，则解禁鼠标滚轮，并退出
+                window.onmousewheel = function () {
+                    return true;
+                }
+                return true;
+            }
+            if (currentpos < finalpos) {//未到达，则计算下一步所要移动的距离
+                dist = Math.ceil((finalpos - currentpos) / 10);
+                currentpos += dist;
+            }
+            if (currentpos > finalpos) {
+                dist = Math.ceil((currentpos - finalpos) / 10);
+                currentpos -= dist;
+            }
+
+            var scrTop = BlogDirectory.getScrollBarPosition();//获取滚动条当前位置
+            window.scrollTo(0, currentpos);//移动窗口
+            if (BlogDirectory.getScrollBarPosition() == scrTop)//若已到底部，则解禁鼠标滚轮，并退出
+            {
+                window.onmousewheel = function () {
+                    return true;
+                }
+                return true;
+            }
+
+            //进行下一步移动
+            var repeat = "BlogDirectory.moveScrollBar(" + finalpos + "," + interval + ")";
+            document.body.movement = setTimeout(repeat, interval);
+        },
+
+        htmlDecode: function (text) {
+            var temp = document.createElement("div");
+            temp.innerHTML = text;
+            var output = temp.innerText || temp.textContent;
+            temp = null;
+            return output;
+        },
+
+        /*
+        创建博客目录，
+        id表示包含博文正文的 div 容器的 id，
+        mt 和 st 分别表示主标题和次级标题的标签名称（如 H2、H3，大写或小写都可以！），
+        interval 表示移动的速度
+        */
+        createBlogDirectory: function (id, mt, st, interval) {
+            //获取博文正文div容器
+            var elem = document.getElementById(id);
+            if (!elem) return false;
+            //获取div中所有元素结点
+            var nodes = elem.getElementsByTagName("*");
+            //创建博客目录的div容器
+            var divSideBar = document.createElement('DIV');
+            divSideBar.className = 'uprightsideBar';
+            divSideBar.setAttribute('id', 'uprightsideBar');
+            var divSideBarTab = document.createElement('DIV');
+            divSideBarTab.setAttribute('id', 'sideBarTab');
+            divSideBar.appendChild(divSideBarTab);
+            var h2 = document.createElement('H2');
+            divSideBarTab.appendChild(h2);
+            var txt = document.createTextNode('目录导航');
+            h2.appendChild(txt);
+            var divSideBarContents = document.createElement('DIV');
+            divSideBarContents.style.display = 'none';
+            divSideBarContents.setAttribute('id', 'sideBarContents');
+            divSideBar.appendChild(divSideBarContents);
+            //创建自定义列表
+            var dlist = document.createElement("dl");
+            divSideBarContents.appendChild(dlist);
+            var num = 0;//统计找到的mt和st
+            mt = mt.toUpperCase();//转化成大写
+            st = st.toUpperCase();//转化成大写
+            //遍历所有元素结点
+            for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].nodeName == mt || nodes[i].nodeName == st) {
+                    //获取标题文本
+                    var nodetext = nodes[i].innerHTML.replace(/<\/?[^>]+>/g, "");//innerHTML里面的内容可能有HTML标签，所以用正则表达式去除HTML的标签
+                    nodetext = nodetext.replace(/ /ig, "");//替换掉所有的
+                    nodetext = BlogDirectory.htmlDecode(nodetext);
+                    //插入锚
+                    nodes[i].setAttribute("id", "blogTitle" + num);
+                    var item;
+                    switch (nodes[i].nodeName) {
+                        case mt:    //若为主标题
+                            item = document.createElement("dt");
+                            break;
+                        case st:    //若为子标题
+                            item = document.createElement("dd");
+                            break;
+                    }
+
+                    //创建锚链接
+                    var itemtext = document.createTextNode(nodetext);
+                    item.appendChild(itemtext);
+                    item.setAttribute("name", num);
+                    item.onclick = function () {        //添加鼠标点击触发函数
+                        var pos = BlogDirectory.getElementPosition(document.getElementById("blogTitle" + this.getAttribute("name")));
+                        if (!BlogDirectory.moveScrollBar(pos.top, interval)) return false;
+                    };
+
+                    //将自定义表项加入自定义列表中
+                    dlist.appendChild(item);
+                    num++;
+                }
+            }
+
+            if (num == 0) return false;
+            /*鼠标进入时的事件处理*/
+            divSideBarTab.onmouseenter = function () {
+                divSideBarContents.style.display = 'block';
+            }
+            /*鼠标离开时的事件处理*/
+            divSideBar.onmouseleave = function () {
+                divSideBarContents.style.display = 'none';
+            }
+
+            document.body.appendChild(divSideBar);
+        }
+
+    };
+
+    window.onload = function () {
+        /*页面加载完成之后生成博客目录*/
+        BlogDirectory.createBlogDirectory("cnblogs_post_body", "h2", "h3", 20);
+    }
+</script>
+<div class="uprightsideBar" id="uprightsideBar">
+    <div id="sideBarTab"><h2>目录导航</h2></div>
+    <div id="sideBarContents" style="display: none;">
+        <dl>
+            <dd name="0">1.目录结构</dd>
+            <dd name="1">2.同个文件的加载顺序，静态资源文件</dd>
+        </dl>
+    </div>
+</div>
+</body>
+</html>

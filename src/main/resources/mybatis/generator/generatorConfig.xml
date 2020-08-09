@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <context id="MySQLTables" targetRuntime="MyBatis3">
+        <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin"/>
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <!--覆盖生成XML文件-->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&amp;characterEncoding=utf8&amp;zeroDateTimeBehavior=convertToNull&amp;serverTimezone=Asia/Shanghai"
+                        userId="root"
+                        password="famliycomefirst">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <!-- 实体类-->
+        <javaModelGenerator targetPackage="net.suncaper.wowmall.wowmall.entity" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <!--Mapper 映射文件-->
+        <sqlMapGenerator targetPackage="mybatis.mapper" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <!--Dao 接口-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="net.suncaper.wowmall.wowmall.mapper"
+                             targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+
+<!--        <table tableName="oms_cart_item" domainObjectName="OmsCartItem"/>-->
+<!--        <table tableName="oms_company_address" domainObjectName="OmsCompanyAddress"/>-->
+        <table tableName="oms_order" domainObjectName="OmsOrder"/>
+        <table tableName="oms_order_item" domainObjectName="OmsOrderItem"/>
+        <table tableName="payment_info" domainObjectName="PaymentInfo"/>
+        <table tableName="pms_base_attr_info" domainObjectName="PmsBaseAttrInfo"/>
+        <table tableName="pms_base_attr_value" domainObjectName="PmsBaseAttrValue"/>
+        <table tableName="pms_base_catalog1" domainObjectName="PmsBaseCatalog1"/>
+        <table tableName="pms_base_catalog2" domainObjectName="PmsBaseCatalog2"/>
+        <table tableName="pms_base_catalog3" domainObjectName="PmsBaseCatalog3"/>
+        <table tableName="pms_base_sale_attr" domainObjectName="PmsBaseSaleAttr"/>
+        <table tableName="pms_brand" domainObjectName="PmsBrand"/>
+        <table tableName="pms_comment" domainObjectName="PmsComment"/>
+        <table tableName="pms_comment_replay" domainObjectName="PmsCommentReplay"/>
+        <table tableName="pms_product_image" domainObjectName="PmsProductImage"/>
+        <table tableName="pms_product_info" domainObjectName="PmsProductInfo"/>
+        <table tableName="pms_product_sale_attr" domainObjectName="PmsProductSaleAttr"/>
+        <table tableName="pms_product_sale_attr_value" domainObjectName="PmsProductSaleAttrValue"/>
+        <table tableName="pms_product_vertify_record" domainObjectName="PmsProductVertifyRecord"/>
+        <table tableName="pms_sku_attr_value" domainObjectName="PmsSkuAttrValue"/>
+        <table tableName="pms_sku_image" domainObjectName="PmsSkuImage"/>
+        <table tableName="pms_sku_info" domainObjectName="PmsSkuInfo"/>
+        <table tableName="pms_sku_sale_attr_value" domainObjectName="PmsSkuSaleAttrValue"/>
+        <table tableName="ums_member_receive_address" domainObjectName="UmsMemberReceiveAddress"/>
+        <table tableName="ums_sms_member" domainObjectName="UmsSmsMember"/>
+        <table tableName="ums_member_level" domainObjectName="UmsMemberLevel"/>
+<!--        <table tableName="wms_ware_info" domainObjectName="WmsWareInfo"/>-->
+<!--        <table tableName="wms_ware_order_task" domainObjectName="WmsWareOrderTask"/>-->
+<!--        <table tableName="wms_ware_order_task_detail" domainObjectName="WmsWareOrderTaskDetail"/>-->
+<!--        <table tableName="wms_ware_sku" domainObjectName="WmsWareSku"/>-->
+
+
+
+
+    </context>
+</generatorConfiguration>
